@@ -25,3 +25,4 @@
 - Docker container has access directly to host OS resources through the docker engine.
 
 ![containers-vs-virtual-machines](https://user-images.githubusercontent.com/98215575/156018620-264c1558-db92-4b4e-80f9-f27eaec28662.jpg)
+
