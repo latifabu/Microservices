@@ -27,3 +27,5 @@
 ![2020_05_13_12_19_07_PowerPoint_Slide_Show_Azure_AZ104_M01_Compute_ed1_](https://user-images.githubusercontent.com/98215575/156019252-f7ce10c1-6748-4515-9371-f7b000683293.png)
 
 
+### Virtual Machines vs Docker
+- 
