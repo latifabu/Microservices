@@ -28,4 +28,5 @@
 
 
 ### Virtual Machines vs Docker
-- 
+
+<img width="362" alt="image" src="https://user-images.githubusercontent.com/98215575/156019894-6f5356ea-5c79-4eb2-8c1b-ab37ffd46ca4.png">
