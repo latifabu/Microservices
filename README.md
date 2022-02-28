@@ -24,5 +24,6 @@
 - Virtual machines take up a lot of resources and are slow because they have a lot of overhead.
 - Docker container has access directly to host OS resources through the docker engine.
 
-![containers-vs-virtual-machines](https://user-images.githubusercontent.com/98215575/156018620-264c1558-db92-4b4e-80f9-f27eaec28662.jpg)
+![2020_05_13_12_19_07_PowerPoint_Slide_Show_Azure_AZ104_M01_Compute_ed1_](https://user-images.githubusercontent.com/98215575/156019252-f7ce10c1-6748-4515-9371-f7b000683293.png)
+
 
