@@ -83,6 +83,7 @@
 - `docker cp index.html peaceful_snyder:/usr/share/nginx/html/index.html` what i used for nginx
 - `docker cp index.html <id or name>:<path>/<file.name>`
 - check browswer to see 
+<img width="856" alt="image" src="https://user-images.githubusercontent.com/98215575/156223612-c17af388-7540-4536-8ed2-c348b3075f36.png">
 
 ### Saving image on dockerhub
 - run `docker commit <id or name>` e.g.`docker commit peaceful_snyder`
