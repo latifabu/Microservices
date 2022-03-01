@@ -67,7 +67,7 @@ kernel is a layer: that allows your applications to connect to your hardware
 the windows ui, applications, etc
 Kernel is layered 
 
-### Hosting statis website with Nginx using docker
+### Hosting static website with Nginx using docker
 
 - copy the index.html from localhost to 
 - to default location of nginx
