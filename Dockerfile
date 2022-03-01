@@ -1,4 +1,4 @@
-# from which imagge0 image we used as our base image
+# from which imagge image we used as our base image
 FROM nginx
 
 # in the background nginx is working to help facilate the users

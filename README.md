@@ -127,7 +127,22 @@ you have your web page hosted with nginx
 ```
 
 ### Launching app using docker
-- Created a folder with `app` and your `Dockerfile`inside 
+- Created a folder with `app` and your `Dockerfile`inside :
+
+```
+FROM node:latest
+
+WORKDIR /usr/src/app
+
+COPY /app /usr/src/app/
+
+#RUN npm install
+
+EXPOSE 3000
+
+CMD ["node", "app.js"]
+```
+
 - run `docker build -t latifsparta/dockerapp .`
 - `docker images`
 - `docker run -d ip 3000:3000 latifsparta/dockerapp`
