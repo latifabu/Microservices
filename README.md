@@ -63,3 +63,32 @@
 - Cost-Effectiveness with Fast Deployment
 - Mobility 
 - Consistent enivronment
+kernel is a layer: that allows your applications to connect to your hardware
+the windows ui, applications, etc
+Kernel is layered 
+
+### Hosting statis website with Nginx using docker
+
+- copy the index.html from localhost to 
+- to default location of nginx
+- `cd /usr/share/nginx/html`
+- 
+- git bash is sometimes an issue, close the terminal again and run as admin
+- To copy the index.html to the container
+- `docker cp index.html peaceful_snyder:/usr/share/nginx/html/index.html` what i used for nginx
+- `docker cp index.html <id or name>:<path>/<file.name>`
+
+
+### Saving image on dockerhub
+- run `docker commit <id or name>` e.g.`docker commit peaceful_snyder`
+- `docker images` copy desired image id
+- `docker tag <containername/id> <username>/<reponame>:<version>` `docker tag cb333be14231 latifsparta/latif_nginx:latest` default verion is latest
+- `docker push <username>/<reponame> ` e.g. `docker push latifsparta/latif_nginx`
+ exmaple 
+- Now run`docker run -d -p <port:port> username/repo` e.g.`docker run -d -p 80:80 latifsparta/latif_nginx`
+- You should see the image up on localhost 
+-  
+  ```
+if you see blockers then it is cause windows has not given permissions to copy folders
+you have your web page hosted with nginx
+ ```
