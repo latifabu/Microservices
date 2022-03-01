@@ -38,7 +38,7 @@
 ## Docker setup and commands
 - Follow https://docs.docker.com/desktop/windows/install/
 - open terminal and enter `docker version`
-- Enter `alias docker="winpty docker"` if we have issues with running docker
+- If you come across an issue with 'None TTY device', enter `alias docker="winpty docker"` in the terminal.
 - `docker pull` pull a specific image
 - `docker push` push a specific image
 - `docker login` adds your credentials
@@ -46,8 +46,8 @@
 - `2368:2368` first port represents the port on our localhost, second number represents the port the image runs on.
 - On browser enter `localhost:2368`
 - ` docker run -d -p 2368:2368 ghost` to run in a detach mode `-d`
-- docker ps - shows which containers are running, their id's and other infor
-- docker ps -a - will show what has been running and acts as a log
+- `docker ps` - shows which containers are running, their id's and other infor
+- `docker ps -a` - will show what has been running and acts as a log
 - `docker run -d -p 80:80 nginx` nginx
 - `docker run -d -p 99:80 nginx` for of port mapping
 - Enter `localhost:99` in browser
@@ -56,28 +56,33 @@
 - Resume the container with `docker start`
 - `docker rm <id>` to delete the container of the image
 - Delete container `docker rm`
-- `docker logs <container id> `
+- `docker logs <container id> `will show logs for that container if it's run in detached mode
+- docker rm 6c58770eea46
 
 ### Benefirs of docker:
 - Flexibility, can be used on all operating systems very easily.
 - Cost-Effectiveness with Fast Deployment
 - Mobility 
 - Consistent enivronment
-kernel is a layer: that allows your applications to connect to your hardware
-the windows ui, applications, etc
-Kernel is layered 
+- kernel is a layer: that allows your applications to connect to your hardware,
+ windows ui, applications, etc
+
 
 ### Hosting static website with Nginx using docker
-
+- `docker exec -it <container-id>` sh this is essentially SSH'ing into the container. `exec = execute`, `-it = interact`, `sh = shell`. Running bash instead
+- `docker cp <file.name> <containerid>:<path>/<file.name>` 
 - copy the index.html from localhost to 
 - to default location of nginx
 - `cd /usr/share/nginx/html`
-- 
 - git bash is sometimes an issue, close the terminal again and run as admin
+- run `apt-get update -y && apt-get upgrade -y`
+- Then `apt-get install nano -y`
+- sudo nano `index.html`
+- Make changes to the `index.html`
 - To copy the index.html to the container
 - `docker cp index.html peaceful_snyder:/usr/share/nginx/html/index.html` what i used for nginx
 - `docker cp index.html <id or name>:<path>/<file.name>`
-
+- check browswer to see 
 
 ### Saving image on dockerhub
 - run `docker commit <id or name>` e.g.`docker commit peaceful_snyder`
@@ -88,8 +93,45 @@ Kernel is layered
 - Now run`docker run -d -p <port:port> username/repo` e.g.`docker run -d -p 80:80 latifsparta/latif_nginx`
 - You should see the image up on localhost 
 
+#### Automation by using the `dockerfile`: 
+
+```
+FROM nginx
+
+# in the background nginx is working to help facilate the users
+
+
+# label to communicate with team members
+LABEL MAINTAINER=latif
+
+
+# copy data from localhost to container
+COPY index.html /usr/share/nginx/html
+
+# expose port 80 in this case, for nginx
+EXPOSE 80
+
+# launch/create a container which helped us see a coniiner
+CMD ["nginx", "-g", "daemon off;"]
+```
+- Run `docker build -t <containername/id> <nameit> .`
+- create repo on docker hub
+- add the reponame to the next line
+- `docker tag <containername/id> <username>/<reponame>`
+- `docker push <username>/<reponame>:latest`
+
 
 ```
 if you see blockers then it is cause windows has not given permissions to copy folders
 you have your web page hosted with nginx
 ```
+
+### Launching app using docker
+- Created a folder with `app` and your `Dockerfile`inside 
+- run `docker build -t latifsparta/dockerapp .`
+- `docker images`
+- `docker run -d ip 3000:3000 latifsparta/dockerapp`
+- `docker ps`
+- rm image and container
+- then run image again to see if it works
+  
