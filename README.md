@@ -91,7 +91,7 @@
 - `docker tag <containername/id> <username>/<reponame>:<version>` `docker tag cb333be14231 latifsparta/latif_nginx:latest` default verion is latest
 - `docker push <username>/<reponame> ` e.g. `docker push latifsparta/latif_nginx`
  exmaple 
-- Now run`docker run -d -p <port:port> username/repo` e.g.`docker run -d -p 80:80 latifsparta/latif_nginx`
+- Now run `docker run -d -p <port:port> username/repo` e.g.`docker run -d -p 80:80 latifsparta/latif_nginx`
 - You should see the image up on localhost 
 
 #### Automation by using the `dockerfile`: 
