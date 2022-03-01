@@ -87,8 +87,9 @@ Kernel is layered
  exmaple 
 - Now run`docker run -d -p <port:port> username/repo` e.g.`docker run -d -p 80:80 latifsparta/latif_nginx`
 - You should see the image up on localhost 
--  
-  ```
+
+
+```
 if you see blockers then it is cause windows has not given permissions to copy folders
 you have your web page hosted with nginx
- ```
+```
