@@ -228,5 +228,71 @@ kubernatec
 
 Using Docker Compose ` https://docs.docker.com/compose/ `
 - Define your app’s environment with a Dockerfile so it can be reproduced anywhere.
-- 
+- copy the `mongod.conf` file to dir where app is
+- `mongod.conf`:
+  
+```
+storage:
+  dbPath: /var/lib/mongodb
+  journal:
+    enabled: true
+#  engine:
+#  mmapv1:
+#  wiredTiger:
+
+# where to write logging data.
+systemLog:
+  destination: file
+  logAppend: true
+  path: /var/log/mongodb/mongod.log
+
+# network interfaces
+net:
+  port: 27017
+  bindIp: 0.0.0.0
+
+```
+Create a `docker-compose.yml` in the workdir where app is located
+- Enter:
+  
+```
+version: "3.9"
+
+services: 
+
+  mongo:
+    image: mongo
+    container_name: mongo
+ #   restart: always
+
+    volumes:
+      - ./mongod.conf:/etc/mongod.conf
+      - ./logs:/var/log/mongod/
+      - ./db:/var/lib/mongodb
+      #- ./mongod.service:/lib/systemd/system/mongod.service
+
+    ports:
+
+      - "27017:27017"
+
+  app:
+
+    container_name: app
+    restart: always
+    build: ./app
+    ports:
+
+      - "3000:3000"
+    links:
+      - mongo
+    environment: 
+
+      - DB_HOST=mongodb://mongo:27017/posts
+    #command: node app/seeds/seed.js
+```
+
+- run `docker compose up` or `docker compose up -d`
+- seed without sh into the container with
+- `docker exec -it <container id> command `
+- `docker exec -it app node seeds/seed.js`
 
