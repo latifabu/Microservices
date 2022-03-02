@@ -143,7 +143,6 @@ EXPOSE 3000
 
 CMD ["node", "app.js"]
 ```
-
 - run `docker build -t latifsparta/dockerapp .`
 - `docker images`
 - `docker run -d ip 3000:3000 latifsparta/dockerapp`
@@ -151,3 +150,83 @@ CMD ["node", "app.js"]
 - rm image and container
 - then run image again to see if it works
   
+#### Build production ready (Multi-stage build)
+- Dependices
+- current image is in working state
+- listening on required port - port 3000
+- copy app folder
+- npm install
+- npm install express - in some cases
+- 
+- CMD [node. app.js]
+- `localhost:3000` displys node=app-home-page
+- add another layer, 
+- add prodcution ready layer
+- options to compress
+- 1) find the slimmer/smaller size of image to use - check `dockerhub` - must support our base image
+- create an alias
+- syntax --from=app path of WKDIR:new image WORKDIR
+- E.g.g size `105gb` to `250mb`aprox 
+- 
+-  (`/usr/src/app`)
+
+### Reducing the size of an image
+- Edit dockerfile
+- create app alias
+
+```
+FROM node:latest as APP 
+
+WORKDIR /usr/src/app
+
+COPY /app /usr/src/app/ 
+
+RUN npm install
+
+FROM node:alpine
+
+# THis line of code does the magic here to compress the images
+COPY --from=app /usr/src/app /usr/src/app
+
+WORKDIR /usr/src/app
+
+EXPOSE 3000
+
+CMD ["node", "app.js"]
+
+```
+Alternative code if problems occur:
+
+```
+COPY package*.json ./
+RUN npm install -g npm@latest
+RUN npm install express
+
+# THis line of code does the magic here to compress the images
+COPY --from=app /usr/src/app /usr/src/app
+
+
+EXPOSE 3000
+
+CMD ["node", "app.js"]
+
+```
+### Copying from container to localhost
+- run `docker run -d -p 2000:3000 ahskhan/node-deploy-k8:v2`
+- `docker ps` find image name
+- create a new dir
+- cd into it
+- enter `docker cp pedantic_feynman:/usr/src/app <filename/`
+
+### Docker compose
+Docker compose is good for two or three containers.
+Docker compose up will bring up the container to scale on daemon, seldf healing, autosacling
+
+fault taolrance
+kubernatec
+
+
+Using Docker Compose ` https://docs.docker.com/compose/ `
+- Define your app’s environment with a Dockerfile so it can be reproduced anywhere.
+- 
+
