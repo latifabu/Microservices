@@ -87,6 +87,7 @@
 
 ### Saving image on dockerhub
 - run `docker commit <id or name>` e.g.`docker commit peaceful_snyder`
+- can also commit and create a repo at the same time e.g. `docker commit <id or name> username/reponame`
 - `docker images` copy desired image id
 - `docker tag <containername/id> <username>/<reponame>:<version>` `docker tag cb333be14231 latifsparta/latif_nginx:latest` default verion is latest
 - `docker push <username>/<reponame> ` e.g. `docker push latifsparta/latif_nginx`
@@ -216,7 +217,7 @@ CMD ["node", "app.js"]
 - `docker ps` find image name
 - create a new dir
 - cd into it
-- enter `docker cp pedantic_feynman:/usr/src/app <filename/`
+- enter `docker cp pedantic_feynman:/usr/src/app <filename/ .`
 
 ### Docker compose
 Docker compose is good for two or three containers.
